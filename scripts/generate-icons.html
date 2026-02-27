@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><title>Icon Generator</title></head>
+<body>
+<canvas id="c"></canvas>
+<script>
+const sizes = [16, 32, 48, 128];
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+
+sizes.forEach(size => {
+  canvas.width = size;
+  canvas.height = size;
+
+  // Background
+  const r = size * 0.2;
+  ctx.beginPath();
+  ctx.roundRect(0, 0, size, size, r);
+  ctx.fillStyle = '#d4a853';
+  ctx.fill();
+
+  // Letter S
+  ctx.fillStyle = '#08080a';
+  ctx.font = `bold ${size * 0.6}px "Georgia", serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('S', size/2, size/2 + size*0.03);
+
+  // Download
+  const a = document.createElement('a');
+  a.download = `icon-${size}.png`;
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+});
+</script>
+</body>
+</html>

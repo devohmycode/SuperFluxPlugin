@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Light theme — SuperFlux Brand */
+  --bg-root: #ffffff;
+  --bg-surface: #f7f6fd;
+  --bg-elevated: #ffffff;
+  --bg-hover: #f0eef8;
+  --bg-active: #e8e5f5;
+  --border-subtle: #eeedf5;
+  --border-default: #e0dff0;
+  --border-strong: #cccadf;
+  --accent: #6C5CE7;
+  --accent-dim: #5a49d6;
+  --accent-glow: rgba(108, 92, 231, 0.08);
+  --accent-text: #6C5CE7;
+  --accent-soft: rgba(108, 92, 231, 0.12);
+  --text-primary: #1a1a2e;
+  --text-secondary: #64648a;
+  --text-tertiary: #9e9eb8;
+  --text-inverse: #ffffff;
+  --red: #ef4444;
+  --green: #22c55e;
+  --blue: #3b82f6;
+
+  --font-display: "Outfit", sans-serif;
+  --font-body: "Outfit", sans-serif;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 400px;
+  min-height: 200px;
+  max-height: 560px;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-primary);
+  background: var(--bg-root);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-default);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-strong);
+}
+
+/* Header gradient background */
+.header-gradient {
+  background: linear-gradient(180deg, var(--bg-surface) 0%, var(--bg-root) 100%);
+}
+
+/* Soft card shadow */
+.card-shadow {
+  box-shadow: 0 1px 3px rgba(108, 92, 231, 0.06), 0 0 0 1px var(--border-subtle);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0); }
+  50% { box-shadow: 0 0 16px 4px rgba(108, 92, 231, 0.15); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 200ms ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 280ms ease-out;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+
+/* Button base styles */
+.btn-primary {
+  background: var(--accent);
+  color: var(--text-inverse);
+  border: none;
+  font-weight: 500;
+  transition: all 150ms ease;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--accent-dim);
+  box-shadow: 0 2px 8px rgba(108, 92, 231, 0.25);
+}
+
+.btn-outline {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+  font-weight: 500;
+  transition: all 150ms ease;
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: var(--bg-hover);
+  border-color: var(--border-strong);
+  color: var(--text-primary);
+}
+
+/* Input focus ring */
+input:focus {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
